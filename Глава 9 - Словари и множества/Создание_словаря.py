@@ -50,3 +50,4 @@ print(employee)
 names = ['Chris', 'Katie', 'Joanna', 'Curt']
 dict_names = {k: len(k) for k in names}
 print(dict_names)
+
