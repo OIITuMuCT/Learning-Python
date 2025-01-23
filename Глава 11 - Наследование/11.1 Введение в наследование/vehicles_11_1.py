@@ -33,10 +33,10 @@ class Automobile:
 
 
 class Car(Automobile):
-    """Класс представляет собой легковой автомобиль.
+    """
+    Класс представляет собой легковой автомобиль.
     Он является подклассом класса Automobile.
     """
-
     # Метод __init__ принимает аргументы для фирмы-изготовителя,
     # модели, пробега, цены и количества дверей.
     def __init__(self, make, model, mileage, price, doors):
@@ -55,32 +55,41 @@ class Car(Automobile):
         return self.__doors
 
 class Truck(Automobile):
-    # Метод __init__ принимает аргументы для
-    # изготовителя, модели, пробега, цены и типа привода пикапа.
-    
+    """ 
+    Класс Truck представляет пикап. 
+    Он является подклассом класса Automobile. 
+    """
     def __init__(self, make, model, mileage, price, drive_type):
-        # вызвать метод __init__ надкласса и передать 
-        # требуемые аргументы. Обратите внимание, что мы также 
+        """
+        Метод __init__ принимает аргументы для
+        изготовителя, модели, пробега, цены и типа привода пикапа.
+        """
+        # вызвать метод __init__ надкласса и передать
+        # требуемые аргументы. Обратите внимание, что мы также
         # передаем self в качестве аргумента.
         Automobile.__init__(self, make, model, mileage, price)
-        
+
         # Инициализировать атрибут __drive_type
         self.__drive_type = drive_type
-        
+
     def set_drive_type(self, drive_type):
         self.__drive_type = drive_type
-    
+
     def get_drive_type(self):
         return self.__drive_type
 
 
 class SUV(Automobile):
-    def __init__(self, make, model, mileage, price, pass_car):
+    """
+    Класс SUV представляет джип. 
+    Он является подклассом Automobile.  
+    """
+    def __init__(self, make, model, mileage, price, pass_cap):
         Automobile.__init__(self, make, model, mileage, price)
-        self.__pass_car = pass_car
+        self.__pass_cap = pass_cap
         
-    def set_pass_car(self, pass_car):
-        self.__pass_car = pass_car
+    def set_pass_cap(self, pass_cap):
+        self.__pass_cap = pass_cap
     
-    def get_pass_cat(self):
-        return self.__pass_car
+    def get_pass_cap(self):
+        return self.__pass_cap
