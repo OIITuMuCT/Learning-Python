@@ -72,3 +72,15 @@ class Truck(Automobile):
     
     def get_drive_type(self):
         return self.__drive_type
+
+
+class SUV(Automobile):
+    def __init__(self, make, model, mileage, price, pass_car):
+        Automobile.__init__(self, make, model, mileage, price)
+        self.__pass_car = pass_car
+        
+    def set_pass_car(self, pass_car):
+        self.__pass_car = pass_car
+    
+    def get_pass_cat(self):
+        return self.__pass_car
