@@ -7,7 +7,7 @@ def main():
     fact = factorial(number)
     
     # Показать факториал
-    print(f'Факториал числа {number} равняется {fact}.') 
+    print(f'Факториал числа {number} равняется {fact}.')
 
 def factorial(num):
     if num == 0:
