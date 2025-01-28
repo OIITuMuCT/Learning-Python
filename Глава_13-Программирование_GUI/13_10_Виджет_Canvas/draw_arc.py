@@ -1,4 +1,4 @@
-# Эта программа рисует прямоугольник.
+# Эта программа чертит дугу на виджете Canvas.
 import tkinter
 
 
@@ -10,7 +10,8 @@ class MyGUI:
         self.canvas = tkinter.Canvas(self.main_window, width=200, height=200)
 
         # Нарисовать две прямые.
-        self.canvas.create_rectangle(20, 20, 180, 180)
+        self.canvas.create_arc(10, 10, 190, 190)
+
         self.canvas.pack()
         tkinter.mainloop()
 
