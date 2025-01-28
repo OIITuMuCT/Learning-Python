@@ -8,7 +8,7 @@ def main():
     cur = conn.cursor()
 
     # Добавить таблицу Inventory.
-    cur.execute('''CREATE TABLE Inventory (ItemId, INTEGER PRIMARY KEY NOT NULL,
+    cur.execute('''CREATE TABLE Inventory (ItemId INTEGER PRIMARY KEY NOT NULL,
                 ItemName TEXT, Price REAL)''')
     # зафиксировать изменения.
     conn.commit()

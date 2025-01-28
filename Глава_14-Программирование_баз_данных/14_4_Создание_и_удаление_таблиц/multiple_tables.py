@@ -10,14 +10,14 @@ def main():
     cur = conn.cursor()
 
     # Добавить таблицу Customers.
-    cur.execute("""CREATE TABLE Customers (
+    cur.execute('''CREATE TABLE Customers (
         CustomerID INTEGER PRIMARY KEY NOT NULL,
         Name TEXT,
-        Email TEXT)""")
+        Email TEXT)''')
     # Добавить таблицу Employees.
-    cur.execute(""" CREATE TABLE Employees (EmployeesID INTEGER PRIMARY KEY NOT NULL,
+    cur.execute('''CREATE TABLE Employees (EmployeesID INTEGER PRIMARY KEY NOT NULL,
                 Name TEXT,
-                Position TEXT) """)
+                Position TEXT)''')
     # Зафиксировать изменения.
     conn.commit()
     
