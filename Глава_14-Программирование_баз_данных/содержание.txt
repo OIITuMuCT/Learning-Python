@@ -128,3 +128,26 @@ BLOB                  Двоичный большой объект   Может 
     Пример:
         CREATE_TABLE Inventory (ItemID INTEGER PRIMARY KEY NOT NULL,
                                 ItemName TEXT, Price REAL)
+            
+    Вставка нулевых данных
+
+    cur.execute(''' INSERT INTO Inventory (ItemName, Price)
+    VALUES ("Электродрель", NULL)''')
+
+    Неявное присвоение NULL столбцу, просто оставив столбец вне инструкции INSERT
+    cur.execute(''' INSERT INTO Inventory (ItemName)
+    VALUES ("Электродрель"))
+
+    Вставка значений переменных
+
+    ''' INSERT INTO Inventory (ItemName, Price) VALUES (?, ?) '''
+    Параметризованный запрос
+    cur.execute(СтрокаSQL_с_Местозаполнителями, (Переменная1, Переменная2, ... ))
+
+    Предположим, что cur это объект Cursor.
+
+        1 item_name = "Гаечный ключ"
+        2 price = 16.99
+        3 cur.execute('''INSERT INTO Inventory (ItemName, Price)
+        4                VALUES (?, ?)''')
+        5                (item_name, price)
