@@ -211,3 +211,46 @@ BLOB                  Двоичный большой объект   Может 
 
         SELECT * FROM Chocolate 
         WHERE RetailPrice > 10.00 OR UnitOnHand < 50
+
+    Сравнение строковых значений в инструкции SELECT
+        SELECT * FROM Chocolate
+        WHERE Description == "плитка молочного шоколада"
+
+        или 
+        SELECT * FROM Chocolate
+        WHERE lower(Description) == "плитка молочного шоколада"
+
+    Использование оператора LIKE
+        SELECT * FROM Chocolate WHERE Description LIKE "%Плитка%"
+    
+    Сортировка результатов запросов SELECT
+        SELECT * FROM Chocolate ORDER BY RetailPrice
+
+    Агрегатные функции
+        В языке SQL агрегатная функция выполняет вычисление на наборе значений 
+        из таблицы базы данных и возвращает одно значение. Например, функция
+        AVG вычисляет среднее значение столбца, содержащего числовые данные.
+        
+        SELECT AVG(RetailPrice) FROM Chocolate
+            Эта инструкция создает одно значение: среднее всех значений 
+        в столбце RetailPrice.
+            Вот пример, который вычисляет среднюю цену всех изделий, имеющих 
+        описание, содержащее слово "Плитка":
+        
+        SELECT AVG(Price) FROM Chocolate WHERE Description LIKE "%Плитка%"
+
+        Еще одной агрегатной функцией является SUM, которая вычисляет сумму 
+        по столбцу, содержащему числовые значения. Следующая ниже инструкция
+        вычисляет сумму значений в столбце UnitOnHand:
+
+        SELECT SUM(UnitOnHand) FROM Chocolate
+
+        Функции MIN и MAX определяют минимально и максимальное значение, 
+        находящееся в столбце, содержащем числовые данные.
+        
+        SELECT MIN(RetailPrice) FROM Chocolate
+
+        SELECT MAX(RetailPrice) FROM Chocolate
+
+        Функция COUNT может использоваться для определения числа строк в таблице:
+        SELECT COUNT(*) FROM Chocolate WHERE RetailPrice > 9.95
