@@ -1,3 +1,4 @@
+# Эта программа создает 
 # Create table chocolate.db
 # rows:
 # ProductID INTEGER PRIMARY KEY NOT NULL,
