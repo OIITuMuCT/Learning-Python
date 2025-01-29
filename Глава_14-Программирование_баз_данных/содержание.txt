@@ -151,3 +151,6 @@ BLOB                  Двоичный большой объект   Может 
         3 cur.execute('''INSERT INTO Inventory (ItemName, Price)
         4                VALUES (?, ?)''',
         5                (item_name, price))
+
+14.6 Запрос данных с помощью инструкции SQL SELECT 
+
