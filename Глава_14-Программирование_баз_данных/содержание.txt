@@ -274,4 +274,18 @@ BLOB                  Двоичный большой объект   Может 
         Внимание!!!!
         UPDATE Chocolate
         SET RetailPrice = 4.95
-        Такая инструкция изменит все значении в столбце RetailPrice 
+        Такая инструкция изменит все значении в столбце RetailPrice
+
+    Обновление нескольких столбцов
+        UPDATE Таблица
+        SET Столбец1 = Значение1,
+            Столбец2 = Значение2,
+            ...
+        WHERE Критерий
+
+        Пример:
+        
+        UPDATE Chocolate
+        SET RetailPrice = 8.99,
+            UnitsOnHands = 100
+        WHERE Description LIKE "%шоколада"
