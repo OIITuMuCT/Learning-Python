@@ -149,5 +149,5 @@ BLOB                  Двоичный большой объект   Может 
         1 item_name = "Гаечный ключ"
         2 price = 16.99
         3 cur.execute('''INSERT INTO Inventory (ItemName, Price)
-        4                VALUES (?, ?)''')
-        5                (item_name, price)
+        4                VALUES (?, ?)''',
+        5                (item_name, price))
