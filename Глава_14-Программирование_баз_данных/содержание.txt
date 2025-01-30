@@ -456,3 +456,17 @@ EmployeeID Name           Position      Department                  City
                             Locations(LocationID))
 SQl-инструкция создания внешнего ключа
     FOREIGN KEY(ИмяСтолбца) REFERENCES ИмяТаблицы(ИмяСтолбца)
+
+
+Извлечение столбцов из нескольких таблиц в инструкции SELECT
+
+SELECT
+    Employees.Name,
+    Departments.DepartmentName,
+    Locations.City
+FROM
+    Employees, Departments, Locations
+WHERE
+    Employees.DepartmentID == Departments.DepartmentID AND
+    Employees.LocationID == Locations.City
+
