@@ -12,7 +12,7 @@ def main():
     results = cur.fetchone()
     
     # Если ID изделия найден, то продолжить...
-    if results != None:
+    if results is not None:
         # Напечатать текущую цену.
         print(f'Текущая цена для {results[0]}: '
               f'$ {results[1]:.2f}')
