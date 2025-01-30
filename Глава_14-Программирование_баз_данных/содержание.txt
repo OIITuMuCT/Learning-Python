@@ -383,4 +383,76 @@ CREATE TABLE Employees (EmployeeID TEXT PRIMARY KEY NOT NULL,
     данных в базе данных. Он осуществляется при помощи SQL-инструкции UPDATE;
     * Удаление - это процесс удаления набора данных из базы данных. Он 
     осуществляется при помощи SQl-инструкции DELETE;
-       
+
+14.11 Реляционные данные 
+    В реляционной базе данных столбец из одной таблицы может быть ассоциирован 
+    со столбцом из других таблиц. Эта ассоциация создает связь между таблицами.
+
+        Базы данных должны строиться таким образом, чтобы данные не дублировались. 
+        Дублирование данных приводит не только к потере места для хранения, но 
+        и к хранению в базе несогласованной и конфликтующей информации. Например,
+        предположим, что мы разрабатываем базу данных для хранения сведений о 
+        сотрудниках компании, имеющей офисы в разных городах. У нас может 
+        возникнуть искушение  поместить все данные в сотрудника в одну таблицу.
+
+EmployeeID Name           Position      Department                  City
+    1      Арлин Мейерс   Директор      Исследования и разработка   Сан-Хосе
+    2      Джанель Грант  Инженер       Производство                Остин
+    3      Джек Смит      Менеджер      Маркетинг                   Нью-Йорк
+    4      Соня Альварадо Аудитор       Бухгалтерский учет          Бостон
+    5      Рене Кинкейд   Дизайнер      Маркетинг                   Нью-Йорк
+    6      Курт Грин      Суnервайзер   Производство                Остин
+
+Данную таблицу можно разбить на три:
+    Таблица Departments:
+        * DepartmentID - INTEGER(PRIMARY KEY);
+        * DepartmentName - TEXT.
+    
+    Таблица Locations:
+        * LocationID - INTEGER(PRIMARY KEY);
+        * City - TEXT.
+
+    Таблица Employees:
+        * EmployeeID - INTEGER(PRIMARY KEY);    # первичный ключ
+        * Name - TEXT;                          # содержит фамилию и имя сотрудника
+        * Position - TEXT;                      # должность сотрудника
+        * DepartmentID - INTEGER;               # идентификационный номер(itentifier, ID) отдела сотрудника
+        * LocationID - INTEGER.                 # ID местоположения сотрудника
+
+Внешние ключи
+    Внешний ключ - это столбец в одной таблице, который ссылается на первичный 
+    ключ в другой таблице. В таблице Employees столбцы DepartmentID и LocationID
+    являются внешними ключами:
+        
+        * столбец DepartmentID в таблице Employees ссылается на столбец 
+    DepartmentID в таблице Departments. Напомним, что DepartmentID является 
+    первичным ключом в таблице Departments.
+        * столбец LocationID в таблице Employees ссылается на столбец LocationID
+        в таблице Locations. LocationID тоже является первичным ключом в таблице
+        Locations.
+
+Диаграммы связей между сущностями
+
+    * Отношение "OneToMany" означает, что для каждой строки в таблице А может быть
+    много строк в таблице В, которые на нее ссылаются.
+    * Отношение "ManyToOne" означает, что многие строки в таблице А, могут 
+    ссылаться на одну строку в таблице В.
+
+Создание внешних ключей на языке SQL
+
+    CREATE TABLE Departments (DepartmentID INTEGER PRIMARY KEY NOT NULL,
+                              DepartmentName TEXT)
+    CREATE TABLE Locations (LocationID INTEGER PRIMARY KEY NOT NULL,
+                            City TEXT)
+    
+    CREATE TABLE Employees (EmployeeID INTEGER PRIMARY KEY NOT NULL,
+                            Name TEXT,
+                            Position TEXT,
+                            DepartmentID INTEGER,
+                            LocationID INTEGER,
+                            FOREIGN KEY(DepartmentID) REFERENCES 
+                            Departments(DepartmentID),
+                            FOREIGN KEY (LocationID) REFERENCES
+                            Locations(LocationID))
+SQl-инструкция создания внешнего ключа
+    FOREIGN KEY(ИмяСтолбца) REFERENCES ИмяТаблицы(ИмяСтолбца)

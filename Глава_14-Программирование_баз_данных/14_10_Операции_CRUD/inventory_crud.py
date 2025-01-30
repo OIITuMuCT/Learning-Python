@@ -1,4 +1,5 @@
 import sqlite3
+
 DATABASE = 'inventory.db'
 MIN_CHOICE = 1
 MAX_CHOICE = 5
@@ -90,7 +91,7 @@ def insert_row(name, price):
     """ вставляет строку в таблицу Inventory """
     conn = None
     try:
-        conn = sqlite3.connect('inventory.db')
+        conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
         cur.execute('''INSERT INTO Inventory (ItemName, Price)
                     VALUES (?, ?)''',
@@ -107,7 +108,7 @@ def display_item(name):
     conn = None
     results = []
     try:
-        conn = sqlite3.connect('inventory.db')
+        conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
         cur.execute('''SELECT * FROM Inventory
                     WHERE ItemName == ?''',
